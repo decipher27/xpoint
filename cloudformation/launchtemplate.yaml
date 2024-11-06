@@ -5,6 +5,6 @@ Resources:
     Properties:
       LaunchTemplateData:
         InstanceType: t3.micro
-        ImageId: ami-0c55b159cbfafe1f0  # Replace with your region's AMI ID
-        KeyName: my-key-pair  # Replace with your key pair name
+        ImageId: <ami-id>
+        KeyName: <key-pair-name>
       LaunchTemplateName: !Sub "${AWS::StackName}-LaunchTemplate"

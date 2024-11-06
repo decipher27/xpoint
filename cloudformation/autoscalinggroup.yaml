@@ -1,0 +1,27 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Parameters:
+  DesiredCapacity:
+    Type: Number
+    Default: 1
+    Description: "The number of instances in the Auto Scaling Group"
+  BaseName:
+    Type: String
+    Description: "The base name for the ASG and other artifacts"
+
+Resources:
+  MyAutoScalingGroup:
+    Type: AWS::AutoScaling::AutoScalingGroup
+    Properties:
+      AutoScalingGroupName: !Sub "${BaseName}-ASG"
+      LaunchTemplate:
+        LaunchTemplateId: !Ref LaunchTemplateID
+        Version: !GetAtt MyLaunchTemplate.LatestVersionNumber
+      MinSize: 1
+      MaxSize: 10
+      DesiredCapacity: !Ref DesiredCapacity
+      VPCZoneIdentifier:
+        - subnet-0123456789abcdef  # Replace with appropriate subnet IDs
+Outputs:
+  ASGName:
+    Description: "Auto Scaling Group Name"
+    Value: !GetAtt MyAutoScalingGroup.AutoScalingGroupName

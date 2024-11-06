@@ -20,7 +20,7 @@ Resources:
       MaxSize: 10
       DesiredCapacity: !Ref DesiredCapacity
       VPCZoneIdentifier:
-        - subnet-0123456789abcdef  # Replace with appropriate subnet IDs
+        - <subnet-id>
 Outputs:
   ASGName:
     Description: "Auto Scaling Group Name"
